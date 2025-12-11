@@ -1,0 +1,22 @@
+{
+  "address": "0xDCc916CeF75059a5ED8199bd46d9ae247E9f6Bd3",
+  "abi": [
+    "event AccessGranted(uint256 indexed,address indexed)",
+    "event AccessRevoked(uint256 indexed,address indexed)",
+    "event FileDownloaded(uint256 indexed,address indexed)",
+    "event FileUploaded(uint256 indexed,address indexed,string,bytes32,uint256)",
+    "event OwnershipTransferred(address indexed,address indexed)",
+    "function access(uint256,address) view returns (bool)",
+    "function checkAccess(uint256,address) view returns (bool)",
+    "function downloadFile(uint256)",
+    "function files(uint256) view returns (string,bytes32,uint256,address)",
+    "function getFile(uint256) view returns ((string,bytes32,uint256,address))",
+    "function grantAccess(uint256,address)",
+    "function nextFileId() view returns (uint256)",
+    "function owner() view returns (address)",
+    "function renounceOwnership()",
+    "function revokeAccess(uint256,address)",
+    "function transferOwnership(address)",
+    "function uploadFile(string,bytes32,uint256)"
+  ]
+}

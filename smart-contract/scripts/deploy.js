@@ -1,22 +1,23 @@
 const hre = require("hardhat");
 
 async function main() {
-  console.log("Deploying Counter contract...");
+  console.log("Deploying SFS contract...");
 
-  const Counter = await hre.ethers.getContractFactory("Counter");
-  const counter = await Counter.deploy();
-  await counter.waitForDeployment();
+  const SFS = await hre.ethers.getContractFactory("SFS");
+  const sfs = await SFS.deploy();
+  await sfs.waitForDeployment();
 
-  const address = await counter.getAddress();
-  console.log("Counter contract deployed to:", address);
+  const address = await sfs.getAddress();
+  console.log("SFS contract deployed to:", address);
 
-  // Example interactions
-  const count = await counter.getCount();
-  console.log("Initial count:", count.toString());
-
-  const tx = await counter.increment();
-  await tx.wait();
-  console.log("After increment:", (await counter.getCount()).toString());
+  // Save the contract address and ABI for frontend
+  const fs = require("fs");
+  const contractData = {
+    address: address,
+    abi: SFS.interface.format('json')
+  };
+  fs.writeFileSync("../frontend/src/contract/SFS.json", JSON.stringify(contractData, null, 2));
+  console.log("Contract address and ABI saved to frontend/src/contract/SFS.json");
 }
 
 main()
